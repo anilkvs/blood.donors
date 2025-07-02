@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blood Donor Platform</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.png" type="image/png">
+</head>
+<body>
+
+<header class="header">
+  <div class="logo">
+    <img src="images/logo.jpg" alt="Logo" class="logo-img">
+    <span>Blood Donor Platform</span>
+  </div>
+  <nav class="menu">
+    <a href="#" onclick="showSection('home')">Home</a>
+    <a href="#" onclick="showSection('donors')">Donors Info</a>
+    <a href="#" onclick="showSection('compatibility')">Blood Compatibility</a>
+    <a href="#" onclick="showSection('gallery')">Gallery</a>
+    <a href="#" onclick="showSection('faq')">FAQs</a>
+  </nav>
+</header>
+
+<section id="home" class="home-section full-bg">
+  <h1>Donate Blood, Save Lives</h1>
+  <p>"The gift of blood is the gift of life. There is no substitute for human blood."</p>
+</section>
+
+<!--
+<section id="donors" class="table-section" style="display: none;">
+  <h2>DONORS INFO</h2>
+  <table class="data-table" id="donorTable">19:02 02-07-2025
+    <thead>
+      <tr class="skyblue"><th>Sl No</th><th>Name of the Donor</th><th>Gender</th><th>Blood Group</th>
+        <th>Date of Donation</th><th>Next Eligible Donation Date</th><th>Contact Number</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td><td>Aashritha</td><td>Female</td><td>O+</td><td>19-06-2025</td><td class="auto-calc"></td><td>8328427220</td>
+      </tr>
+      <tr>
+        <td>2</td><td>Sarayu</td><td>Female</td><td>B+</td><td>15-05-2025</td><td class="auto-calc"></td><td>9876543210</td>
+      </tr>
+      <tr>
+        <td>2</td><td>Anil</td><td>Male</td><td>B+</td><td>10-04-2025</td><td class="auto-calc"></td><td>9876543210</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="pdf-download">
+  <button onclick="downloadPDF()">Download PDF</button>
+</div>
+</section> -->
+
+<section id="donors" class="table-section" style="display: none;">
+  <h2>DONORS INFO</h2>
+
+  <div class="search-add-controls">
+  <input type="text" id="searchInput" oninput="searchTable()" placeholder="Search by name, gender, blood group or contact">
+  <button onclick="downloadPDF()" class="inline-download">Download PDF</button>
+</div>
+
+
+<div id="noMatchMessage" class="no-match" style="display: none;">No matching records found.</div>
+
+
+
+  <table class="data-table" id="donorTable">
+    <thead>
+  <tr class="highlight-header">
+    <th>Sl No</th>
+    <th>Name</th>
+    <th>Gender</th>
+    <th>Blood Group</th>
+    <th>Date of Donation</th>
+    <th>Next Eligible Date</th>
+    <th>Contact Number</th>
+  </tr>
+</thead>
+    <tbody>
+	<tr>
+	<td>1</td><td>MNSV Prasad</td><td>Male</td><td>  </td><td>19-06-2025</td><td class="auto-calc"></td><td>9849358977</td>
+      	</tr>
+      	<tr>
+        <td>2</td><td>E Srihari Rao</td><td>Male</td><td>  </td><td>19-06-2025</td><td class="auto-calc"></td><td>9849121268</td>
+      	</tr>
+      <tr>
+        <td>3</td><td>K Hemanth</td><td>Male</td><td>O+</td><td>19-06-2025</td><td class="auto-calc"></td><td>9866616989</td>
+      </tr>
+
+<tr>
+	<td>4</td><td>K Srinivasa Rao</td><td>Male</td><td>O+</td><td>19-06-2025</td><td class="auto-calc"></td><td>9440432467</td>
+      </tr>
+      <tr>
+        <td>5</td><td>M Murali Mohan</td><td>Male</td><td>O+</td><td>19-06-2025</td><td class="auto-calc"></td><td>9885299284</td>
+      </tr>
+      <tr>
+        <td>6</td><td>E Jeevan Kumar</td><td>Male</td><td>O+</td><td>19-06-2025</td><td class="auto-calc"></td><td>9848523299</td>
+      </tr>
+
+<tr>
+	<td>7</td><td>AVS Suresh Kumar</td><td>Male</td><td>A+</td><td>19-06-2025</td><td class="auto-calc"></td><td>8897905024</td>
+      </tr>
+      <tr>
+        <td>8</td><td>P Govind</td><td>Male</td><td>O+</td><td>19-06-2025</td><td class="auto-calc"></td><td>7799555456</td>
+      </tr>
+      <tr>
+        <td>9</td><td>B Syamprasad</td><td>Male</td><td>O+</td><td>19-06-2025</td><td class="auto-calc"></td><td>9160940191</td>
+      </tr>
+
+<tr>
+	<td>10</td><td>K Sobhanadri Naidu</td><td>Male</td><td>B+</td><td>19-06-2025</td><td class="auto-calc"></td><td>9493942727</td>
+      </tr>
+      <tr>
+        <td>11</td><td>K Rajesh</td><td>Male</td><td>O+</td><td>19-06-2025</td><td class="auto-calc"></td><td>9985034940</td>
+      </tr>
+      <tr>
+        <td>12</td><td>Kolli Rajesh</td><td>Male</td><td>B+</td><td>19-06-2025</td><td class="auto-calc"></td><td>8722334666</td>
+      </tr>
+
+<tr>
+	<td>13</td><td>P Jagadeesh</td><td>Male</td><td>O+</td><td>19-06-2025</td><td class="auto-calc"></td><td>7731934449</td>
+      </tr>
+      <tr>
+        <td>14</td><td>S Ravi Sekhar</td><td>Male</td><td>A+</td><td>19-06-2025</td><td class="auto-calc"></td><td>9652244000</td>
+      </tr>
+      <tr>
+        <td>15</td><td>A Dileep</td><td>Male</td><td>O+</td><td>19-06-2025</td><td class="auto-calc"></td><td>7036055485</td>
+      </tr>
+
+<tr>
+	<td>16</td><td>Y Appaji</td><td>Male</td><td>O+</td><td>19-06-2025</td><td class="auto-calc"></td><td>9701463455</td>
+      </tr>
+      <tr>
+        <td>17</td><td>B Kodanda Ram</td><td>Male</td><td>B+</td><td>19-06-2025</td><td class="auto-calc"></td><td>9951681615</td>
+      </tr>
+      <tr>
+        <td>18</td><td>A Sai Babu</td><td>Male</td><td>A-</td><td>19-06-2025</td><td class="auto-calc"></td><td>7013234125</td>
+      </tr>
+
+<tr>
+	<td>19</td><td>A Jogi Rajasekhar</td><td>Male</td><td>O+</td><td>19-06-2025</td><td class="auto-calc"></td><td>9985746003</td>
+      </tr>
+      <tr>
+        <td>20</td><td>G Sateesh Kumar</td><td>Male</td><td>O+</td><td>19-06-2025</td><td class="auto-calc"></td><td>8125183759</td>
+      </tr>
+      <tr>
+        <td>21</td><td>K Ramu</td><td>Male</td><td>B+</td><td>19-06-2025</td><td class="auto-calc"></td><td>9866118380</td>
+      </tr>
+
+<tr>
+	<td>22</td><td>T Atchyuta Rao</td><td>Male</td><td>O+</td><td>19-06-2025</td><td class="auto-calc"></td><td>9581390504</td>
+      </tr>
+      <tr>
+        <td>23</td><td>L Prem Kumar</td><td>Male</td><td></td><td>19-06-2025</td><td class="auto-calc"></td><td>8978414944</td>
+      </tr>
+      <tr>
+        <td>24</td><td>E Sudhir Kumar</td><td>Male</td><td></td><td>19-06-2025</td><td class="auto-calc"></td><td>7989705636</td>
+      </tr>
+
+<tr>
+	<td>25</td><td>KS Sindhusha</td><td>Female</td><td>B+</td><td>19-06-2025</td><td class="auto-calc"></td><td>9177867637</td>
+      </tr>
+      <tr>
+        <td>26</td><td>P Sangeetha</td><td>Female</td><td>B+</td><td>19-06-2025</td><td class="auto-calc"></td><td>9701257191</td>
+      </tr>
+      <tr>
+        <td>27</td><td>Sarayu Koka</td><td>Male</td><td>O+</td><td>19-06-2025</td><td class="auto-calc"></td><td></td>
+      </tr>      
+
+<tr>
+	<td>28</td><td>KRS Aashritha</td><td>Female</td><td>O+</td><td>19-06-2025</td><td class="auto-calc"></td><td>8328427220</td>
+      </tr>
+      <tr>
+        <td>29</td><td>U Sanjana</td><td>Female</td><td>B+</td><td>19-06-2025</td><td class="auto-calc"></td><td>9876543210</td>
+      </tr>
+      <tr>
+        <td>30</td><td>K Manideep</td><td>Male</td><td>O+</td><td>19-06-2025</td><td class="auto-calc"></td><td>9440432467</td>
+      </tr>
+	
+<tr>
+        <td>31</td><td>AK Kishore</td><td>Male</td><td>A+</td><td>19-06-2025</td><td class="auto-calc"></td><td>9885270250</td>
+      </tr>
+<tr>
+        <td>32</td><td>MS Narayana</td><td>Male</td><td>A+</td><td>19-06-2025</td><td class="auto-calc"></td><td>9100954328</td>
+      </tr>
+    </tbody>
+  </table>
+
+  
+</section>
+
+
+
+<section id="compatibility" class="table-section alt-bg" style="display: none;">
+  <h2>Blood Compatibility</h2>
+  <table class="data-table">
+    <thead>
+      <tr class="highlight-header"><th>Blood Group</th><th>Can Donate To</th><th>Can Receive From</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>A−</td><td>A−, A+, AB−, AB+</td><td>A−, O−</td></tr>
+      <tr><td>A+</td><td>A+, AB+</td><td>A+, A−, O+, O−</td></tr>
+      <tr><td>B−</td><td>B−, B+, AB−, AB+</td><td>B−, O−</td></tr>
+      <tr><td>B+</td><td>B+, AB+</td><td>B+, B−, O+, O−</td></tr>
+      <tr><td>AB−</td><td>AB−, AB+</td><td>AB−, A−, B−, O−</td></tr>
+      <tr><td>AB+</td><td>AB+</td><td>All blood groups</td></tr>
+      <tr><td>O−</td><td>All blood groups</td><td>O−</td></tr>
+      <tr><td>O+</td><td>O+, A+, B+, AB+</td><td>O+, O−</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="gallery" class="gallery-section" style="display: none;">
+  <h2>GALLERY</h2>
+  <div class="gallery-grid" id="galleryContainer">
+    <img src="images/camp.jpg" alt="Camp" onclick="openLightbox(0)">
+    <img src="images/forms.jpg" alt="forms" onclick="openLightbox(1)">
+    <img src="images/councelling1.jpg" alt="councelling1" onclick="openLightbox(2)">
+    <img src="images/registration.jpg" alt="registration" onclick="openLightbox(3)">
+    <img src="images/sangeetha.jpg" alt="sangeetha" onclick="openLightbox(4)">
+    <img src="images/sindu.jpg" alt="sindu" onclick="openLightbox(5)">
+    <img src="images/srihari.jpg" alt="srihari" onclick="openLightbox(6)">
+    <img src="images/prasad.jpg" alt="prasad" onclick="openLightbox(7)">
+    <img src="images/hemanth.jpg" alt="hemanth" onclick="openLightbox(8)">
+    <img src="images/murali.jpg" alt="murali" onclick="openLightbox(9)">
+    <img src="images/jeevan.jpg" alt="jeevan" onclick="openLightbox(10)">
+    <img src="images/sekhar.jpg" alt="sekhar" onclick="openLightbox(11)">
+    <img src="images/jaggu1.jpg" alt="jaggu1" onclick="openLightbox(12)">
+    <img src="images/atchyut.jpg" alt="atchyut" onclick="openLightbox(13)">
+    <img src="images/appaji.jpg" alt="appaji" onclick="openLightbox(14)">
+    <img src="images/dileep.jpg" alt="dileep" onclick="openLightbox(15)">
+    <img src="images/kolli_rajesh.jpg" alt="kolli_rajesh" onclick="openLightbox(16)">
+    <img src="images/krajesh.jpg" alt="krajesh" onclick="openLightbox(17)">
+    <img src="images/ramu.jpg" alt="ramu" onclick="openLightbox(18)">
+    <img src="images/sanju.jpg" alt="sanju" onclick="openLightbox(19)">
+    <img src="images/sarayu.jpg" alt="sarayu" onclick="openLightbox(20)">
+    <img src="images/aashu.jpg" alt="aashu" onclick="openLightbox(21)">
+    <img src="images/manideep.jpg" alt="manideep" onclick="openLightbox(22)">
+    <img src="images/prem.jpg" alt="prem" onclick="openLightbox(23)">
+    <img src="images/sudhir.jpg" alt="sudhir" onclick="openLightbox(24)">
+    <img src="images/donors1.jpg" alt="donors1" onclick="openLightbox(25)">
+    <img src="images/jaggu.jpg" alt="jaggu" onclick="openLightbox(26)">
+    <img src="images/saibabu.jpg" alt="saibabu" onclick="openLightbox(27)">
+    <img src="images/sateesh.jpg" alt="sateesh" onclick="openLightbox(28)">
+    <img src="images/sobha.jpg" alt="sobha" onclick="openLightbox(29)">
+    <img src="images/srinivas.jpg" alt="srinivas" onclick="openLightbox(30)">
+    <img src="images/donors.jpg" alt="donors" onclick="openLightbox(31)">
+    <img src="images/councelling.jpg" alt="councelling" onclick="openLightbox(32)">
+    <img src="images/memento.jpg" alt="memento" onclick="openLightbox(33)">
+    <img src="images/memento1.jpg" alt="memento1" onclick="openLightbox(34)">
+    <img src="images/donors2.jpg" alt="donors2" onclick="openLightbox(35)">
+    
+
+    </div>
+  <div id="lightboxModal" class="lightbox hidden">
+    <span class="close" onclick="closeLightbox()">&times;</span>
+    <span class="prev" onclick="changeLightbox(-1)">&#10094;</span>
+    <img id="lightboxImage" src="" alt="Preview">
+    <span class="next" onclick="changeLightbox(1)">&#10095;</span>
+  </div>
+</section>
+
+<section id="faq" class="table-section" style="display: none;">
+
+  <h2>FAQs</h2>
+
+<p style="font-size: 18px; color: #555; margin-top: 40px;">
+  <b><i>19 Common Excuses for Not Donating Blood. Is Your Excuse Here?</i></b>
+</p>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleFAQ(this)">
+      <span class="faq-number">1.</span> 
+      <span class="faq-text">Frankly I'm scared of blood</span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      Nearly everyone feels that way the first time. Donating blood has become a habit with many people. A few regulars have donated blood more than 100 times!
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleFAQ(this)">
+      <span class="faq-number">2.</span> 
+      <span class="faq-text">I'm too young</span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      You can start donating blood once you are 18 years old and continue upto 60 years of age.
+    </div>
+  </div>
+
+<div class="faq-item">
+  <div class="faq-question" onclick="toggleFAQ(this)">
+    <span class="faq-number">3.</span>
+    <span class="faq-text">I’ll feel weak after donating blood.</span>
+    <span class="faq-toggle">+</span>
+  </div>
+  <div class="faq-answer">
+    Most donors feel absolutely fine after donating. You’re encouraged to rest briefly and hydrate — your body replenishes the lost fluids quickly.
+  </div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-question" onclick="toggleFAQ(this)">
+    <span class="faq-number">4.</span>
+    <span class="faq-text">Diabetics can't donate blood.</span>
+    <span class="faq-toggle">+</span>
+  </div>
+  <div class="faq-answer">
+    People with well-controlled diabetes (without insulin dependency) <strong>can</strong> donate blood. Always check with your doctor.
+  </div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-question" onclick="toggleFAQ(this)">
+    <span class="faq-number">5.</span>
+    <span class="faq-text">I might catch a disease while donating.</span>
+    <span class="faq-toggle">+</span>
+  </div>
+  <div class="faq-answer">
+    Impossible. All blood donation equipment is sterile and used only once. There’s zero risk of infection.
+  </div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-question" onclick="toggleFAQ(this)">
+    <span class="faq-number">6.</span>
+    <span class="faq-text">Blood donation is painful.</span>
+    <span class="faq-toggle">+</span>
+  </div>
+  <div class="faq-answer">
+    Only a small pinch is felt when the needle is inserted. Most donors say it’s less painful than a mosquito bite.
+  </div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-question" onclick="toggleFAQ(this)">
+    <span class="faq-number">7.</span>
+    <span class="faq-text">Women shouldn’t donate blood.</span>
+    <span class="faq-toggle">+</span>
+  </div>
+  <div class="faq-answer">
+    Women can absolutely donate blood if they meet health and hemoglobin criteria. In fact, many regular donors are women!
+  </div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-question" onclick="toggleFAQ(this)">
+    <span class="faq-number">8.</span>
+    <span class="faq-text">I have high blood pressure — I can't donate.</span>
+    <span class="faq-toggle">+</span>
+  </div>
+  <div class="faq-answer">
+    As long as your blood pressure is within an acceptable range and controlled, you can usually donate blood.
+  </div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-question" onclick="toggleFAQ(this)">
+    <span class="faq-number">9.</span>
+    <span class="faq-text">I’m too old to donate blood.</span>
+    <span class="faq-toggle">+</span>
+  </div>
+  <div class="faq-answer">
+    In India, anyone between <strong>18 and 60 years</strong> can donate. Some blood banks accept older donors if they’re in good health.
+  </div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-question" onclick="toggleFAQ(this)">
+    <span class="faq-number">10.</span>
+    <span class="faq-text">I need to be on an empty stomach to donate.</span>
+    <span class="faq-toggle">+</span>
+  </div>
+  <div class="faq-answer">
+    Not at all. You should eat a light, healthy meal and drink water before donating blood.
+  </div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-question" onclick="toggleFAQ(this)">
+    <span class="faq-number">11.</span>
+    <span class="faq-text">If I donate blood once, I’ll have to do it regularly.</span>
+    <span class="faq-toggle">+</span>
+  </div>
+  <div class="faq-answer">
+    No obligation! You can choose to donate as often or as rarely as you like.
+  </div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-question" onclick="toggleFAQ(this)">
+    <span class="faq-number">12.</span>
+    <span class="faq-text">Blood donation takes too long.</span>
+    <span class="faq-toggle">+</span>
+  </div>
+  <div class="faq-answer">
+    The actual donation takes <strong>only 8–10 minutes</strong>. The entire process (registration, rest) may take 30–45 minutes.
+  </div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-question" onclick="toggleFAQ(this)">
+    <span class="faq-number">13.</span>
+    <span class="faq-text">I don't have enough blood to spare.</span>
+    <span class="faq-toggle">+</span>
+  </div>
+  <div class="faq-answer">
+    The average adult has <strong>4.5–5 liters</strong> of blood. You only donate ~350–450ml — your body replenishes it quickly.
+  </div>
+</div>
+
+
+  <!-- Add more <div class="faq-item"> ... </div> here for 3 to 19 -->
+
+</section>
+
+
+
+
+<script>
+
+function searchTable() {
+  const input = document.getElementById("searchInput").value.trim().toLowerCase();
+  const rows = document.querySelectorAll("#donorTable tbody tr");
+  const noMatchDiv = document.getElementById("noMatchMessage");
+
+  // Keywords related to table headers — if user types any of these, do NOT filter
+  const headerKeywords = [
+    "sl", "name", "gender", "blood", "group",
+    "date", "eligible", "contact", "number"
+  ];
+
+  // If the search input contains any header keyword, show all rows and skip filtering
+  const isHeaderTerm = headerKeywords.some(keyword => input.includes(keyword));
+
+  if (isHeaderTerm || input === "") {
+    rows.forEach(row => row.style.display = "");
+    noMatchDiv.style.display = "none";
+    return;
+  }
+
+  let found = false;
+
+  rows.forEach(row => {
+    const cells = row.querySelectorAll("td");
+
+    const searchableText = [
+      cells[1]?.innerText.toLowerCase(), // Name
+      cells[2]?.innerText.toLowerCase(), // Gender
+      cells[3]?.innerText.toLowerCase(), // Blood Group
+      cells[6]?.innerText.toLowerCase()  // Contact Number
+    ].join(" ");
+
+    if (searchableText.includes(input)) {
+      row.style.display = "";
+      found = true;
+    } else {
+      row.style.display = "none";
+    }
+  });
+
+  // Show or hide the "no data" message
+  noMatchDiv.style.display = found ? "none" : "block";
+}
+
+
+
+
+function showSection(sectionId) {
+  const sections = ['home', 'donors', 'compatibility', 'gallery', 'faq'];
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.style.display = id === sectionId ? 'block' : 'none';
+  });
+  localStorage.setItem('lastSection', sectionId);
+  window.scrollTo(0, 0);
+}
+
+function calculateStaticNextDonationDates() {
+  const rows = document.querySelectorAll("#donorTable tbody tr");
+
+  rows.forEach(row => {
+    const gender = row.cells[2]?.textContent.trim();
+    const dateStr = row.cells[4]?.textContent.trim();
+    const targetCell = row.cells[5];
+
+    const match = dateStr.match(/^(\d{2})-(\d{2})-(\d{4})$/);
+    if (!match || !gender) return;
+
+    const [ , dd, mm, yyyy ] = match.map(Number);
+    const baseDate = new Date(yyyy, mm - 1, dd);
+    const addDays = gender.toLowerCase() === "male" ? 90 : 120;
+    baseDate.setDate(baseDate.getDate() + addDays);
+
+    const newDD = String(baseDate.getDate()).padStart(2, '0');
+    const newMM = String(baseDate.getMonth() + 1).padStart(2, '0');
+    const newYYYY = baseDate.getFullYear();
+
+    targetCell.textContent = `${newDD}-${newMM}-${newYYYY}`;
+  });
+}
+
+const galleryImages = [
+  "images/camp.jpg",
+  "images/forms.jpg",
+  "images/councelling1.jpg",
+  "images/registration.jpg",
+  "images/sangeetha.jpg",
+  "images/sindu.jpg",
+  "images/srihari.jpg",
+  "images/prasad.jpg",
+  "images/hemanth.jpg",
+  "images/murali.jpg",
+  "images/jeevan.jpg",
+  "images/sekhar.jpg",
+  "images/jaggu1.jpg",
+  "images/atchyut.jpg",
+  "images/appaji.jpg",
+  "images/dileep.jpg",
+  "images/kolli_rajesh.jpg",
+  "images/krajesh.jpg",
+  "images/ramu.jpg",
+  "images/sanju.jpg",
+  "images/sarayu.jpg",
+  "images/aashu.jpg",
+  "images/manideep.jpg",
+  "images/prem.jpg",
+  "images/sudhir.jpg",
+  "images/donors1.jpg",
+  "images/jaggu.jpg",
+  "images/saibabu.jpg",
+  "images/sateesh.jpg",
+  "images/sobha.jpg",
+  "images/srinivas.jpg",
+  "images/donors.jpg",
+  "images/councelling.jpg",
+  "images/memento.jpg",
+  "images/memento1.jpg",
+  "images/donors2.jpg"
+];
+let currentIndex = 0;
+
+function openLightbox(index) {
+  currentIndex = index;
+  const modal = document.getElementById("lightboxModal");
+  const image = document.getElementById("lightboxImage");
+  image.src = galleryImages[index];
+  modal.classList.remove("hidden");
+  document.body.style.overflow = "hidden";
+}
+
+function closeLightbox() {
+  document.getElementById("lightboxModal").classList.add("hidden");
+  document.body.style.overflow = "";
+}
+
+function changeLightbox(direction) {
+  currentIndex += direction;
+  if (currentIndex < 0) currentIndex = galleryImages.length - 1;
+  if (currentIndex >= galleryImages.length) currentIndex = 0;
+  document.getElementById("lightboxImage").src = galleryImages[currentIndex];
+}
+
+document.addEventListener("keydown", (e) => {
+  const modal = document.getElementById("lightboxModal");
+  if (modal.classList.contains("hidden")) return;
+  if (e.key === "Escape") closeLightbox();
+  if (e.key === "ArrowLeft") changeLightbox(-1);
+  if (e.key === "ArrowRight") changeLightbox(1);
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  showSection(localStorage.getItem("lastSection") || "home");
+  calculateStaticNextDonationDates();
+});
+
+function downloadPDF() {
+  const table = document.querySelector("#donorTable");
+  if (!table) return;
+
+  const clone = table.cloneNode(true);
+  const rows = clone.querySelectorAll("tbody tr");
+
+  rows.forEach(row => {
+    if (row.style.display === "none") row.remove();
+  });
+
+  const wrapper = document.createElement("div");
+  wrapper.appendChild(clone);
+
+  const opt = {
+    margin: 0.5,
+    filename: 'donors-info.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 2 },
+    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+  };
+
+  html2pdf().from(wrapper).set(opt).save();
+}
+
+
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<script>
+  function toggleFAQ(el) {
+    const answer = el.nextElementSibling;
+    const toggle = el.querySelector(".faq-toggle");
+
+    const isOpen = answer.classList.contains("open");
+
+    // Close all
+    document.querySelectorAll(".faq-answer").forEach(a => a.classList.remove("open"));
+    document.querySelectorAll(".faq-toggle").forEach(t => t.innerText = "+");
+
+    // Open the clicked one if it wasn't already open
+    if (!isOpen) {
+      answer.classList.add("open");
+      toggle.innerText = "−";
+    }
+  }
+</script>
+
+
+
+<footer class="footer">
+  &copy; 2025 Blood Donor Platform
+</footer>
+
+
+
+</body>
+</html>
