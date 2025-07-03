@@ -23,35 +23,46 @@
   </nav>
 </header>
 
-<section id="home" class="home-section full-bg">
-  <h1>Donate Blood, Save Lives</h1>
-  <p>"The gift of blood is the gift of life. There is no substitute for human blood."</p>
+
+<section id="home" class="home-section full-bg active">
+
+<div class="home-overlay">
+  <div class="home-intro">
+    <h1>Donate Blood, Save Lives</h1>
+    <p>Connecting donors and recipients with compassion, trust, and care.</p>
+  </div>
+
+  <div class="home-actions">
+    <button onclick="showSection('donors')">🧑‍🤝‍🧑 Donors Info</button>
+    <button onclick="showSection('compatibility')">🩸 Compatibility</button>
+    <button onclick="showSection('gallery')">📸 Gallery</button>
+    <button onclick="showSection('faq')">❓ FAQs</button>
+  </div>
+
+  <div class="home-facts">
+    <div class="fact">🩸 1 blood donation can save up to 3 lives</div>
+    <div class="fact">❤️ Blood cannot be manufactured—only donated</div>
+    <div class="fact">🧬 O− is the universal donor</div>
+    <div class="fact">👥 AB+ is the universal recipient</div>
+  </div>
+
+  <!-- Static Quote -->
+  <div class="home-quote">
+    “The gift of blood is the gift of life. There is no substitute.”
+  </div>
+
+  <!-- Rotating Quote -->
+<div class="home-testimonial">
+  <div id="quoteBox" class="quote-text">“Donating blood is the easiest way to save lives.”</div>
+</div>
+
+  
+</div>
+
+
 </section>
 
-<!--
-<section id="donors" class="table-section" style="display: none;">
-  <h2>DONORS INFO</h2>
-  <table class="data-table" id="donorTable">19:02 02-07-2025
-    <thead>
-      <tr class="skyblue"><th>Sl No</th><th>Name of the Donor</th><th>Gender</th><th>Blood Group</th>
-        <th>Date of Donation</th><th>Next Eligible Donation Date</th><th>Contact Number</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td><td>Aashritha</td><td>Female</td><td>O+</td><td>19-06-2025</td><td class="auto-calc"></td><td>8328427220</td>
-      </tr>
-      <tr>
-        <td>2</td><td>Sarayu</td><td>Female</td><td>B+</td><td>15-05-2025</td><td class="auto-calc"></td><td>9876543210</td>
-      </tr>
-      <tr>
-        <td>2</td><td>Anil</td><td>Male</td><td>B+</td><td>10-04-2025</td><td class="auto-calc"></td><td>9876543210</td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="pdf-download">
-  <button onclick="downloadPDF()">Download PDF</button>
-</div>
-</section> -->
+
 
 <section id="donors" class="table-section" style="display: none;">
   <h2>DONORS INFO</h2>
@@ -83,7 +94,7 @@
 	<td>1</td><td>MNSV Prasad</td><td>Male</td><td>  </td><td>19-06-2025</td><td class="auto-calc"></td><td>9849358977</td>
       	</tr>
       	<tr>
-        <td>2</td><td>E Srihari Rao</td><td>Male</td><td>  </td><td>19-06-2025</td><td class="auto-calc"></td><td>9849121268</td>
+        <td>2</td><td>E Srihari Rao</td><td>Male</td><td>B+</td><td>19-06-2025</td><td class="auto-calc"></td><td>9849121268</td>
       	</tr>
       <tr>
         <td>3</td><td>K Hemanth</td><td>Male</td><td>O+</td><td>19-06-2025</td><td class="auto-calc"></td><td>9866616989</td>
@@ -166,7 +177,7 @@
         <td>26</td><td>P Sangeetha</td><td>Female</td><td>B+</td><td>19-06-2025</td><td class="auto-calc"></td><td>9701257191</td>
       </tr>
       <tr>
-        <td>27</td><td>Sarayu Koka</td><td>Female</td><td>O+</td><td>19-06-2025</td><td class="auto-calc"></td><td></td>
+        <td>27</td><td>Sarayu Koka</td><td>Male</td><td>O+</td><td>19-06-2025</td><td class="auto-calc"></td><td></td>
       </tr>      
 
 <tr>
@@ -622,6 +633,31 @@ function downloadPDF() {
       toggle.innerText = "−";
     }
   }
+</script>
+
+
+<script>
+  const quotes = [
+    "“Donating blood is the easiest way to save lives.”",
+    "“Be a hero. It's in your blood.”",
+    "“Blood donation costs nothing but saves everything.”",
+    "“Every drop counts. Donate blood, save lives.”"
+  ];
+
+  let quoteIndex = 0;
+  const quoteBox = document.getElementById("quoteBox");
+
+  function rotateQuote() {
+    quoteBox.classList.remove("fade-in");
+    setTimeout(() => {
+      quoteBox.textContent = quotes[quoteIndex];
+      quoteBox.classList.add("fade-in");
+      quoteIndex = (quoteIndex + 1) % quotes.length;
+    }, 200);
+  }
+
+  setInterval(rotateQuote, 4000);
+  rotateQuote();
 </script>
 
 
